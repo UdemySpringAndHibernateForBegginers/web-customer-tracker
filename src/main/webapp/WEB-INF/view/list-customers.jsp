@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>List customers</title>
+    <!-- załadowanie styli -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
     <div id="wrapper">
@@ -22,9 +24,9 @@
 
                         <c:forEach var="tmpCustomer" items="${customers}">
                             <tr>
-                                <th>${tmpCustomer.firstName}</th>
-                                <th>${tmpCustomer.lastName}</th>
-                                <th>${tmpCustomer.email}</th>
+                                <td>${tmpCustomer.firstName}</td>
+                                <td>${tmpCustomer.lastName}</td>
+                                <td>${tmpCustomer.email}</td>
                             </tr>
                         </c:forEach>
 
