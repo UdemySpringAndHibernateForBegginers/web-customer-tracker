@@ -2,6 +2,7 @@ package com.luv2code.springdemo.controller;
 
 import com.luv2code.springdemo.dao.CustomerDao;
 import com.luv2code.springdemo.entity.Customer;
+import com.luv2code.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +16,13 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    private CustomerDao customerDao;
+    private CustomerService customerService;
 
     @GetMapping("/list")
     public String listCustomers(Model model) {
 
         // get customers from dao
-        List<Customer> allCustomers = customerDao.getAllCustomers();
+        List<Customer> allCustomers = customerService.getAllCustomers();
 
         // add customers to model
         model.addAttribute("customers", allCustomers);
