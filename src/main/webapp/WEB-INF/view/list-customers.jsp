@@ -33,12 +33,16 @@
                         <c:url var="updateLink" value="/customer/showFormForUpdate">
                             <c:param name="customerId" value="${tmpCustomer.id}" />
                         </c:url>
+                        <!-- konstruujemy zmienną typu *url* zawierającą loink do operacji delete na zadanym customerze -->
+                        <c:url var="deleteLink" value="/customer/delete">
+                            <c:param name="customerId" value="${tmpCustomer.id}" />
+                        </c:url>
 
                             <tr>
                                 <td>${tmpCustomer.firstName}</td>
                                 <td>${tmpCustomer.lastName}</td>
                                 <td>${tmpCustomer.email}</td>
-                                <td><a href="${updateLink}">Update</a></td>
+                                <td><a href="${updateLink}">Update</a> | <a href="${deleteLink}" onclick="if (!(confirm('Are you sure?'))) return false">Delete</a></td>
                             </tr>
                         </c:forEach>
 
