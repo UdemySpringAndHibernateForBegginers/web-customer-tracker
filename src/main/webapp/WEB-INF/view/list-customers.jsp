@@ -24,13 +24,21 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
+                        <th>Action</th>
                         </tr>
 
                         <c:forEach var="tmpCustomer" items="${customers}">
+
+                        <!-- konstruujemy zmienną typu *url* zawierającą loink do operacji update na zadanym customerze -->
+                        <c:url var="updateLink" value="/customr/showForForUpdate">
+                            <c:param name="customerId" value="${tmpCustomer.id}" />
+                        </c:url>
+
                             <tr>
                                 <td>${tmpCustomer.firstName}</td>
                                 <td>${tmpCustomer.lastName}</td>
                                 <td>${tmpCustomer.email}</td>
+                                <td><a href="${updateLink}">Update</a></td>
                             </tr>
                         </c:forEach>
 
