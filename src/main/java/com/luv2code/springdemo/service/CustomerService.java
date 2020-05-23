@@ -13,4 +13,7 @@ public interface CustomerService {
     Customer getCustomer(int customerId);
 
     void deleteCustomer(int id);
+
+    List<Customer> searchForCustomers(String searchName);
+
 }

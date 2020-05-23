@@ -1,6 +1,7 @@
 package com.luv2code.springdemo.dao;
 
 import com.luv2code.springdemo.entity.Customer;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -67,5 +68,32 @@ public class CustomerDaoImpl implements CustomerDao {
 
         //delete
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Customer> searchForCustomers(String searchName) {
+
+        //get current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        //create query
+        Query<Customer> query = null;
+
+        if (StringUtils.isNotBlank(searchName)) {
+
+            query = currentSession.createQuery("from Customer " +
+                    "where lower(firstName) like :searchFirstName or lower(lastName) like :searchLastName " +
+                    "order by lastName", Customer.class);
+            query.setParameter("searchFirstName", "%" + searchName.toLowerCase() + "%");
+            query.setParameter("searchLastName", "%" + searchName.toLowerCase() + "%");
+        } else {
+            query = currentSession.createQuery("from Customer order by lastName", Customer.class);
+        }
+
+        // execute query
+        List<Customer> resultList = query.getResultList();
+
+        //resurn results
+        return resultList;
     }
 }
