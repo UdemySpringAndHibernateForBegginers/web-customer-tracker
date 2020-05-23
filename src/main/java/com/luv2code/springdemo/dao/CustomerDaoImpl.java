@@ -38,8 +38,8 @@ public class CustomerDaoImpl implements CustomerDao {
         //get current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
-        //create query
-        currentSession.save(customer);
+        //save or update object in DB
+        currentSession.saveOrUpdate(customer); //jeśli parametr, któy przyjdzie będzie już zawierał "id" to wykona się update istniejącego customera
     }
 
     @Override

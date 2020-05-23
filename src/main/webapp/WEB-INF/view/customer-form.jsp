@@ -19,6 +19,11 @@
                 <h3>Save customer</h3>
 
                 <form:form action="saveCustomer" modelAttribute="customer" method="POST">
+
+                    <!-- ukryte pole do przechowywanai ID customera - będzie wypełnione tylko jeśli formularz zostanie użyty -->
+                    <!-- celem updatowania istniejącego customera, czyli wtedy, kiedy w obiekcie ${customer} przyjdzie faktyczny obiekt -->
+                    <form:hidden path="id" />
+
                     <table>
                         <tbody>
                             <tr>
