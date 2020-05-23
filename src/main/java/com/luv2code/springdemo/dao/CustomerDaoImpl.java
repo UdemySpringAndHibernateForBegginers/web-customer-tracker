@@ -23,7 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Session currentSession = sessionFactory.getCurrentSession();
 
         //create query
-        Query<Customer> query = currentSession.createQuery("from Customer", Customer.class);
+        Query<Customer> query = currentSession.createQuery("from Customer order by lastName", Customer.class);
 
         // execute query
         List<Customer> resultList = query.getResultList();
