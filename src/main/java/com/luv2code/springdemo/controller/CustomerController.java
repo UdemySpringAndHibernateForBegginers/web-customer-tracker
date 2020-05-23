@@ -46,4 +46,16 @@ public class CustomerController {
 
         return "redirect:/customer/list";
     }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("customerId") int customerId, Model model) {
+
+        //pobranie customera z bazy danych
+        Customer customer = customerService.getCustomer(customerId);
+
+        //przypisanie customera jako modelAttribute celem początkowego wypełnienia formularza w widoku jsp
+        model.addAttribute("customer", customer);
+
+        return "customer-form";
+    }
 }

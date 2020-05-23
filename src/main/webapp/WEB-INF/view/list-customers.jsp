@@ -30,7 +30,7 @@
                         <c:forEach var="tmpCustomer" items="${customers}">
 
                         <!-- konstruujemy zmienną typu *url* zawierającą loink do operacji update na zadanym customerze -->
-                        <c:url var="updateLink" value="/customr/showForForUpdate">
+                        <c:url var="updateLink" value="/customer/showFormForUpdate">
                             <c:param name="customerId" value="${tmpCustomer.id}" />
                         </c:url>
 
